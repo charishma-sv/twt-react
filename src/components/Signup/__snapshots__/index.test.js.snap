@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` Signup component should match snapshot of Signup Component 1`] = `
+<div
+  className="common-style container-fluid"
+  style={
+    Object {
+      "flex": "1 1 0%",
+    }
+  }
+>
+  <div
+    className="common-style flex-row w-100 container-fluid"
+    style={Object {}}
+  >
+    <div
+      className="d-block position-relative p-0 m-0 container-fluid"
+      style={
+        Object {
+          "inset": "0",
+          "minHeight": "0px",
+          "minWidth": "0px",
+        }
+      }
+    >
+      <div
+        className="d-flex flex-column flex-grow-1 flex-shrink-1 container-fluid"
+        style={
+          Object {
+            "alignSelf": "stretch",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

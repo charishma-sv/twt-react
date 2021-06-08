@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` Login component should match snapshot of Login Component 1`] = `
+<div
+  className="h-100 p-0 d-flex justify-content-center mt-4 container-fluid"
+>
+  <div
+    className="pl-3 pr-3 mt-4 m-0  container-fluid"
+    style={
+      Object {
+        "width": "400px",
+      }
+    }
+  >
+    <div
+      className="w-100 container-fluid"
+    >
+      <div
+        className="login-header  container-fluid"
+      >
+        <svg
+          className="position-relative d-block "
+          fill="#1DA1F2"
+          style={
+            Object {
+              "height": "30px",
+              "width": "30px",
+            }
+          }
+          viewBox="0 0 24 24"
+        >
+          <g>
+            <path
+              d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"
+            />
+          </g>
+        </svg>
+        <h1
+          className="display-5 font-weight-bold mt-4 mb-2"
+        >
+          Log in to Twitter
+        </h1>
+        
+      </div>
+      <div
+        className="login-form p-0 container-fluid"
+      >
+        <form
+          className=""
+        >
+          <div
+            className="row  m-3 form-group"
+          >
+            <label
+              className=" col border border-gray rounded h-100 m-0 p-0 form-label"
+            >
+              <div
+                className="m-0 p-0 h-100 position-relative"
+                style={
+                  Object {
+                    "zIndex": "1",
+                  }
+                }
+              >
+                <span
+                  className="position-absolute h-100 p-3"
+                  id="emailLabel"
+                >
+                  Phone, email, or username
+                </span>
+              </div>
+              <input
+                className="col p-3 border-0 mt-4  form-control"
+                id="loginEmail"
+                name="userEmail"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                type="email"
+                value=""
+              />
+            </label>
+          </div>
+          <div
+            className="row  m-3 form-group"
+          >
+            <label
+              className=" col border border-gray rounded h-100 m-0 p-0 form-label"
+            >
+              <div
+                className="m-0 p-0 h-100 position-relative"
+                style={
+                  Object {
+                    "zIndex": "1",
+                  }
+                }
+              >
+                <span
+                  className="position-absolute h-100 p-3"
+                  id="passwordLabel"
+                >
+                  Password
+                </span>
+              </div>
+              <input
+                className="col p-3 border-0 mt-4  form-control"
+                id="loginPassword"
+                name="userPassword"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onClick={[Function]}
+                type="password"
+                value=""
+              />
+            </label>
+          </div>
+          <div
+            className=" m-3 form-group"
+          >
+            <button
+              className="rounded-pill btn btn-custom-color btn-block"
+              disabled={false}
+              onClick={[Function]}
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+      <div
+        className="p-0 container-fluid"
+      >
+        <div
+          className="text-center"
+          style={
+            Object {
+              "color": "#1da1f2",
+            }
+          }
+        >
+          <span>
+            Forgot Password?
+          </span>
+           .
+           
+          <a
+            href="/signup"
+            onClick={[Function]}
+            style={
+              Object {
+                "color": "#1da1f2",
+              }
+            }
+          >
+            Signup for Twitter
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
