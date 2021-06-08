@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/twt-react/static/css/main.fb9f87f3.chunk.css",
+    "main.js": "/twt-react/static/js/main.91cc7685.chunk.js",
+    "main.js.map": "/twt-react/static/js/main.91cc7685.chunk.js.map",
+    "runtime-main.js": "/twt-react/static/js/runtime-main.e8ac1eb4.js",
+    "runtime-main.js.map": "/twt-react/static/js/runtime-main.e8ac1eb4.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/twt-react/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.c875429a.chunk.js": "/twt-react/static/js/2.c875429a.chunk.js",
+    "static/js/2.c875429a.chunk.js.map": "/twt-react/static/js/2.c875429a.chunk.js.map",
+    "static/js/3.5bdbf1ac.chunk.js": "/twt-react/static/js/3.5bdbf1ac.chunk.js",
+    "static/js/3.5bdbf1ac.chunk.js.map": "/twt-react/static/js/3.5bdbf1ac.chunk.js.map",
+    "index.html": "/twt-react/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/twt-react/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.fb9f87f3.chunk.css.map": "/twt-react/static/css/main.fb9f87f3.chunk.css.map",
+    "static/js/2.c875429a.chunk.js.LICENSE.txt": "/twt-react/static/js/2.c875429a.chunk.js.LICENSE.txt",
+    "static/media/logo.ee316e0d.png": "/twt-react/static/media/logo.ee316e0d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e8ac1eb4.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.c875429a.chunk.js",
+    "static/css/main.fb9f87f3.chunk.css",
+    "static/js/main.91cc7685.chunk.js"
+  ]
+}
