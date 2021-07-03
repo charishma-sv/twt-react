@@ -1,6 +1,5 @@
 import React from 'react';
-import { MemoryRouter, Redirect, Router } from 'react-router-dom';
-import { screen } from '@testing-library/react';
+import { MemoryRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
@@ -39,7 +38,7 @@ describe('feed render on autheticated user', () => {
       path: '/',
     };
 
-    const component = renderer.create(
+    renderer.create(
       <MemoryRouter initialEntries={['/']}>
         <ProtectedRoute component={AComponent} {...props} user={user} />
       </MemoryRouter>
@@ -53,7 +52,6 @@ describe('user exists', () => {
     const AComponent = () => <Feed />;
 
     let user = { email: 'john' };
-    const path = '/feed';
     const propts = {
       path: '/feed',
     };
@@ -69,7 +67,6 @@ describe('user exists', () => {
     const AComponent = () => <Feed />;
 
     let user = 'john';
-    const path = '/feed';
     const propts = {
       path: '/feed',
     };
