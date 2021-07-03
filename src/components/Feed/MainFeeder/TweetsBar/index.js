@@ -12,7 +12,14 @@ function TweetsBar(props) {
     >
       <Container className="common-style">
         <HeaderPageName />
-        <NewTweet updateTweets={props.updateTweets} />
+        <NewTweet
+          updateTweets={props.updateTweets}
+          addTweet={props.addTweet}
+          newTweetMediaFilesHandler={props.newTweetMediaFilesHandler}
+          attachment={props.attachment}
+          attachmentFiles={props.attachmentFiles}
+          removeAttachment={props.removeAttachment}
+        />
         <div
           className="border-top border-bottom"
           style={{ height: '12px', backgroundColor: 'rgb(247, 249, 250)' }}

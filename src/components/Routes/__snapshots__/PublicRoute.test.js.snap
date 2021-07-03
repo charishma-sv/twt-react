@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`feed render on user exists snaphot on user exits 1`] = `null`;
+
+exports[`loadingComponent snapshot on user is null snaphot on user exits 1`] = `null`;

@@ -25,6 +25,11 @@ class MainFeeder extends Component {
               tweets={this.props.tweets}
               updateTweets={this.props.updateTweets}
               deleteTweet={this.props.deleteTweet}
+              addTweet={this.props.addTweet}
+              newTweetMediaFilesHandler={this.props.newTweetMediaFilesHandler}
+              attachment={this.props.attachment}
+              attachmentFiles={this.props.attachmentFiles}
+              removeAttachment={this.props.removeAttachment}
             />
             <SideBar />
           </Container>

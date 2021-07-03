@@ -1,19 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
-
-import { UserContext } from '../../../providers/UserProvider';
 import { auth } from '../../../firebase';
-import { useHistory } from 'react-router-dom';
 import logo from '../../../images/logo.png';
 
-const UserData = () => {
-  const user = useContext(UserContext);
-  const name = user ? user.displayName : '';
-  const history = useHistory();
+const UserData = (props) => {
+  const name = props.user ? props.user.displayName : '';
 
   const signOut = () => {
     auth.signOut();
-    history.push('/');
   };
 
   return (
@@ -126,7 +120,7 @@ const UserData = () => {
                     minWidth: '0px',
                     fontWeight: '700',
                     fontSize: '15px',
-                    color: 'rgb(15, 20, 25);',
+                    color: 'rgb(15, 20, 25)',
                     lineHeight: '20px',
                     whiteSpace: 'nowrap',
                     overflowWrap: 'break-word',
@@ -184,6 +178,7 @@ const UserData = () => {
           </Container>
         </Container>
         <button
+          data-testid="signout"
           className=""
           onClick={() => {
             signOut();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` Feed component should match snapshot of Feed Component 1`] = `
+exports[`Feed component should match snapshot of Feed Component 1`] = `
 <div
   className="common-style container-fluid"
   style={
@@ -474,7 +474,7 @@ exports[` Feed component should match snapshot of Feed Component 1`] = `
                           className="p-0 mw-100 d-inline container-fluid"
                           style={
                             Object {
-                              "color": "rgb(15, 20, 25);",
+                              "color": "rgb(15, 20, 25)",
                               "fontSize": "15px",
                               "fontWeight": "700",
                               "lineHeight": "20px",
@@ -484,7 +484,9 @@ exports[` Feed component should match snapshot of Feed Component 1`] = `
                             }
                           }
                         >
-                          <span />
+                          <span>
+                            
+                          </span>
                         </div>
                       </div>
                       <div
@@ -505,7 +507,7 @@ exports[` Feed component should match snapshot of Feed Component 1`] = `
                           }
                         >
                           <span>
-                            @undefined
+                            @
                           </span>
                         </div>
                       </div>
@@ -549,6 +551,7 @@ exports[` Feed component should match snapshot of Feed Component 1`] = `
                 </div>
                 <button
                   className=""
+                  data-testid="signout"
                   onClick={[Function]}
                 >
                   Sign out
@@ -715,6 +718,7 @@ exports[` Feed component should match snapshot of Feed Component 1`] = `
                               >
                                 <input
                                   className="border-0 p-0 pt-1 pb-1 form-control"
+                                  data-testid="tweet-input"
                                   name="tweet"
                                   onChange={[Function]}
                                   placeholder="What's hapenning?"
@@ -725,6 +729,7 @@ exports[` Feed component should match snapshot of Feed Component 1`] = `
                                     }
                                   }
                                   type="text"
+                                  value=""
                                 />
                               </form>
                             </div>
@@ -1030,6 +1035,7 @@ exports[` Feed component should match snapshot of Feed Component 1`] = `
                                   >
                                     <button
                                       className="btn btn-custom-color rounded-pill mt-3 float-right btn btn-primary"
+                                      data-testid="add-tweet"
                                       disabled={false}
                                       onClick={[Function]}
                                       style={

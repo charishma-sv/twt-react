@@ -1,20 +1,17 @@
 import React from 'react';
 import { Form, Row, Col, Button, Container } from 'react-bootstrap';
 
-import { generateTweetDocument } from '../../../../firebase';
 import { UserContext } from '../../../../providers/UserProvider';
 
-function NewTweet(props) {
+const NewTweet = (props) => {
   const [tweet, setTweet] = React.useState('');
   const user = React.useContext(UserContext);
 
-  const addNewTweet = (event) => {
-    event.preventDefault();
+  const addNewTweet = async (user, tweet) => {
+    //if (tweet === '') return;
 
-    generateTweetDocument(user, tweet).then(() => {
-      console.log('user in new Tweet', user);
-      props.updateTweets();
-    });
+    await props.addTweet(user, tweet, props.attachmentFiles);
+
     setTweet('');
   };
 
@@ -23,6 +20,41 @@ function NewTweet(props) {
     const { name, value } = event.currentTarget;
     if (name === 'tweet') setTweet(value);
   };
+
+  const onClickMediaButton = () => {
+    const mediaInput = document.getElementById('media-input');
+    if (mediaInput) {
+      mediaInput.click();
+    }
+  };
+  const onMediaInputChange = () => {
+    const mediaInput = document.getElementById('media-input');
+
+    props.newTweetMediaFilesHandler(mediaInput.files);
+  };
+
+  // React.useEffect(() => {
+  //   const mediaButton = document.getElementById('media'),
+  //     mediaInput = document.getElementById('media-input');
+
+  //   // Open the Finder in mac or files dialog window in windows
+  //   mediaButton.addEventListener(
+  //     'click',
+  //     function (e) {
+  //       if (mediaInput) {
+  //         mediaInput.click();
+  //       }
+  //     },
+  //     false
+  //   );
+
+  //   //listen for selection of files
+  //   mediaInput.addEventListener(
+  //     'change',
+  //     () => props.newTweetMediaFilesHandler(mediaInput.files),
+  //     false
+  //   );
+  // }, []);
 
   return (
     <Container fluid className="p-0">
@@ -42,18 +74,82 @@ function NewTweet(props) {
             </Col>
             <Col className="p-0">
               <Container className=" pt-1 pb-1 p-0 w-100 d-flex flex-column align-items-center">
-                <Container className=" p-0 w-100 ">
+                <Container className=" p-0 w-100 " id="tweet-input">
                   <Form className="w-100 pt-2 pb-2 ">
                     <Form.Control
+                      data-testid="tweet-input"
                       onChange={onChangeHandler}
                       name="tweet"
                       type="text"
+                      value={tweet}
                       placeholder="What's hapenning?"
                       className="border-0 p-0 pt-1 pb-1"
                       style={{ fontWeight: '500', fontSize: '20px' }}
                     />
                   </Form>
                 </Container>
+                {props.attachment && (
+                  <Container
+                    className="d-flex mt-4  p-0 row"
+                    style={{ height: '300px', width: '100%' }}
+                  >
+                    {props.attachmentFiles.map((file) => (
+                      <Container
+                        fluid
+                        className="d-flex flex-grow position-relative col-6 justify-content-start m-0"
+                        style={{ overflow: 'hidden' }}
+                      >
+                        <Container
+                          className="d-flex flex-grow position-relative p-0"
+                          // style={{ flexBasis: '0', width: '100%' }}
+                        >
+                          <img
+                            alt=""
+                            src={URL.createObjectURL(file)}
+                            width="100%"
+                          />
+                          <div
+                            onClick={() => props.removeAttachment(file)}
+                            className="d-flex position-absolute"
+                            style={{
+                              backgroundColor: 'gray',
+                              borderWidth: '0',
+                              borderStyle: 'solid',
+                              borderRadius: '9999px',
+                              cursor: 'pointer',
+                              top: '4px',
+                              left: '4px',
+                              minHeight: '40px',
+                              minWidth: '40px',
+                              userSelect: 'none',
+                              transitionDuration: '0.2s',
+                              transitionProperty: 'background-color,box-shadow',
+                              textAlign: 'center',
+                            }}
+                          >
+                            <svg
+                              viewBox="0 0 24 24"
+                              className="d-inline-block  mw-100 position-relative m-auto"
+                              style={{
+                                color: 'white',
+                                fill: 'currentcolor',
+                                verticalAlign: 'text-bottom',
+                                userSelect: 'none',
+                                height: '16px',
+                                width: '16px',
+                              }}
+                            >
+                              <g>
+                                <path d="M13.414 12l5.793-5.793c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0L12 10.586 6.207 4.793c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414L10.586 12l-5.793 5.793c-.39.39-.39 1.023 0 1.414.195.195.45.293.707.293s.512-.098.707-.293L12 13.414l5.793 5.793c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L13.414 12z"></path>
+                              </g>
+                            </svg>
+                          </div>
+                        </Container>
+                      </Container>
+                    ))}
+                    {/* {typeof props.attachmentFiles} */}
+                  </Container>
+                )}
                 <Container className="p-0 pb-2 w-100 border-bottom d-none">
                   <Row style={{}} className="d-block">
                     <Col className="">
@@ -91,6 +187,8 @@ function NewTweet(props) {
                           <Row>
                             <Col className="p-0">
                               <Button
+                                onClick={() => onClickMediaButton()}
+                                id="media"
                                 className="btn btn-light  rounded-circle p-0"
                                 style={{ width: '2.5em', height: '2.5em' }}
                               >
@@ -111,9 +209,18 @@ function NewTweet(props) {
                                   </svg>
                                 </Container>
                               </Button>
+                              <input
+                                onChange={() => onMediaInputChange()}
+                                type="file"
+                                id="media-input"
+                                multiple
+                                accept="image/*"
+                                style={{ display: 'none' }}
+                              />
                             </Col>
                             <Col className="p-0">
                               <Button
+                                id="gif"
                                 className="btn btn-light  rounded-circle p-0"
                                 style={{ width: '2.5em', height: '2.5em' }}
                               >
@@ -133,6 +240,7 @@ function NewTweet(props) {
                             </Col>
                             <Col className="p-0">
                               <Button
+                                id="poll"
                                 className="btn btn-light  rounded-circle p-0"
                                 style={{ width: '2.5em', height: '2.5em' }}
                               >
@@ -151,6 +259,7 @@ function NewTweet(props) {
                             </Col>
                             <Col className="p-0">
                               <Button
+                                id="emoji"
                                 className="btn btn-light  rounded-circle p-0"
                                 style={{ width: '2.5em', height: '2.5em' }}
                               >
@@ -180,6 +289,7 @@ function NewTweet(props) {
                             </Col>
                             <Col className="p-0">
                               <Button
+                                id="schedule"
                                 className="btn btn-light  rounded-circle p-0"
                                 style={{ width: '2.5em', height: '2.5em' }}
                               >
@@ -204,7 +314,10 @@ function NewTweet(props) {
                       </Col>
                       <Col sm={2} className="p-0 ">
                         <Button
-                          onClick={addNewTweet}
+                          data-testid="add-tweet"
+                          onClick={() => {
+                            addNewTweet(user, tweet);
+                          }}
                           className="btn btn-custom-color rounded-pill mt-3 float-right"
                           style={{ fontSize: '16px', fontWeight: '800' }}
                         >
@@ -221,6 +334,6 @@ function NewTweet(props) {
       </Container>
     </Container>
   );
-}
+};
 
 export default NewTweet;

@@ -23,7 +23,7 @@ class NavHeader extends Component {
         }}
       >
         <Navigation />
-        <UserData />
+        <UserData user={this.props.user} />
       </Container>
 
       // <Container className="p-0 m-0 d-flex flex-column align-items-start position-relative">

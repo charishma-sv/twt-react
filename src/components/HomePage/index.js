@@ -9,7 +9,6 @@ import { UserContext } from '../../providers/UserProvider';
 
 const HomePage = () => {
   const user = useContext(UserContext);
-  console.log('user', user);
 
   return (
     <Container fluid className="p-0">

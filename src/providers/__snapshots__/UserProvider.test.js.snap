@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User provider snapshot when user is null should render LoadingComponent 1`] = `
+<div>
+  <div
+    className=" vh-100 d-flex justify-content-center align-items-center container"
+  >
+    <div
+      className="spinner-grow"
+    />
+  </div>
+</div>
+`;
+
+exports[`User provider snapshot when user is undefined should render Homepage component 1`] = `
+<div>
+  <div
+    className=" vh-100 d-flex justify-content-center align-items-center container"
+  >
+    <div
+      className="spinner-grow"
+    />
+  </div>
+</div>
+`;

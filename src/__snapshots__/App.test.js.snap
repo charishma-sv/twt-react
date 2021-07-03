@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot <App /> should render snapshot 1`] = `
+<div>
+  <div>
+    <div
+      className=" vh-100 d-flex justify-content-center align-items-center container"
+    >
+      <div
+        className="spinner-grow"
+      />
+    </div>
+  </div>
+</div>
+`;

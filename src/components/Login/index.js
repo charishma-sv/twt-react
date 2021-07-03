@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { auth } from '../../firebase';
+import { auth, login } from '../../firebase';
 
 const Login = () => {
   const [email, setEmail] = React.useState('');
@@ -55,10 +55,15 @@ const Login = () => {
 
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
     event.preventDefault();
-    auth.signInWithEmailAndPassword(email, password).catch((error) => {
-      setError('Error signing in with password and email!');
-      console.error('Error signing in with password and email', error);
-    });
+    try {
+      login(email, password);
+    } catch (error) {
+      setError('Error Signing in with email and password');
+    }
+    // auth.signInWithEmailAndPassword(email, password).catch((error) => {
+    //   setError('Error signing in with password and email!');
+    //   console.error('Error signing in with password and email', error);
+    // });
   };
 
   return (
@@ -95,6 +100,7 @@ const Login = () => {
                     style={{ zIndex: '1' }}
                   >
                     <span
+                      data-testid="email-label"
                       id="emailLabel"
                       className={`position-absolute h-100 ${
                         emailClick ? 'p-1 pl-3' : 'p-3'
@@ -104,6 +110,7 @@ const Login = () => {
                     </span>
                   </div>
                   <Form.Control
+                    data-testid="login-email"
                     id="loginEmail"
                     onBlur={(e) => restoreStyle(e)}
                     onClick={(event) => onClickHandler(event)}
@@ -124,6 +131,7 @@ const Login = () => {
                     style={{ zIndex: '1' }}
                   >
                     <span
+                      data-testid="password-label"
                       id="passwordLabel"
                       className={`position-absolute h-100 ${
                         passwordClick ? 'p-1 pl-3' : 'p-3'
@@ -133,6 +141,7 @@ const Login = () => {
                     </span>
                   </div>
                   <Form.Control
+                    data-testid="login-password"
                     id="loginPassword"
                     onClick={(event) => onClickHandler(event)}
                     onBlur={(e) => restoreStyle(e)}
@@ -148,6 +157,7 @@ const Login = () => {
               </Form.Group>
               <Form.Group className=" m-3">
                 <Button
+                  data-testid="sign-in-btn"
                   variant="custom-color"
                   type="submit"
                   block

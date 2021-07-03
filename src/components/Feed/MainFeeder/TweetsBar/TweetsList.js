@@ -4,12 +4,11 @@ import image from '../../../../images/logo.png';
 
 function TweetsList(props) {
   const { tweets } = props;
-
   return (
     <section className="w-100 ">
       <Container fluid className="p-0 ">
         {tweets.map((tweet) => (
-          <Container className="p-0 pb-3 border-bottom mt-2">
+          <Container key={tweet.id} className="p-0 pb-3 border-bottom mt-2">
             <article className="container ">
               <Row className="w-100 m-0 d-flex">
                 <Col
@@ -107,7 +106,10 @@ function TweetsList(props) {
                           </Col>
                           <Col>
                             <Container>
-                              <span onClick={() => props.deleteTweet(tweet.id)}>
+                              <span
+                                data-testid={tweet.id}
+                                onClick={() => props.deleteTweet(tweet.id)}
+                              >
                                 X
                               </span>
                             </Container>

@@ -64,6 +64,7 @@ exports[` Login component should match snapshot of Login Component 1`] = `
               >
                 <span
                   className="position-absolute h-100 p-3"
+                  data-testid="email-label"
                   id="emailLabel"
                 >
                   Phone, email, or username
@@ -71,6 +72,7 @@ exports[` Login component should match snapshot of Login Component 1`] = `
               </div>
               <input
                 className="col p-3 border-0 mt-4  form-control"
+                data-testid="login-email"
                 id="loginEmail"
                 name="userEmail"
                 onBlur={[Function]}
@@ -97,6 +99,7 @@ exports[` Login component should match snapshot of Login Component 1`] = `
               >
                 <span
                   className="position-absolute h-100 p-3"
+                  data-testid="password-label"
                   id="passwordLabel"
                 >
                   Password
@@ -104,6 +107,7 @@ exports[` Login component should match snapshot of Login Component 1`] = `
               </div>
               <input
                 className="col p-3 border-0 mt-4  form-control"
+                data-testid="login-password"
                 id="loginPassword"
                 name="userPassword"
                 onBlur={[Function]}
@@ -119,6 +123,7 @@ exports[` Login component should match snapshot of Login Component 1`] = `
           >
             <button
               className="rounded-pill btn btn-custom-color btn-block"
+              data-testid="sign-in-btn"
               disabled={false}
               onClick={[Function]}
               type="submit"
