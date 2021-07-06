@@ -21,7 +21,13 @@ function TweetsList(props) {
                       className="dot"
                       style={{ height: '50px', width: '50px' }}
                     >
-                      <img alt="User Profile" className="rounded-pill" />
+                      <img
+                        width="100%"
+                        height="100%"
+                        alt="User Profile"
+                        className="rounded-pill"
+                        src={props.user.photoURL}
+                      />
                     </div>
                   </Container>
                 </Col>
@@ -29,17 +35,47 @@ function TweetsList(props) {
                   <Card className="w-100 border-0">
                     <Card.Body className="p-0">
                       <Card.Title>Name:{tweet.user.displayName}</Card.Title>
-                      <Card.Text className="m-0">
-                        <span>Description:{tweet.description}</span>
-                        <Card.Img
-                          className="d-block w-100 mt-2"
-                          variant="top"
-                          src={image}
-                          style={{
-                            borderRadius: '16px',
-                            borderColor: 'rgb(196, 207, 214)',
-                          }}
-                        />
+                      <Card.Text className="d-block m-0">
+                        <span className="d-block mb-2">
+                          Description:{tweet.description}
+                        </span>
+
+                        {tweet.images && (
+                          <div
+                            className=" d-flex p-0 row border border-light"
+                            style={{ height: '100%', width: '100%' }}
+                          >
+                            {tweet.images.map((image) => (
+                              <div
+                                fluid
+                                className="d-flex mt-1 mb-1 p-0 flex-grow position-relative col-6 justify-content-start m-0"
+                                style={{ overflow: 'hidden' }}
+                              >
+                                <div
+                                  className="d-flex ml-1 mr-1 flex-grow position-relative p-0"
+                                  // style={{ flexBasis: '0', width: '100%' }}
+                                >
+                                  <Card.Img
+                                    className="d-block "
+                                    variant="top"
+                                    src={`${image}`}
+                                    style={{
+                                      margintop: '5px',
+                                      marginRight: '5px',
+                                      width: '100%',
+                                      //minWidth: '48%',
+                                      //height: '100%',
+
+                                      //flex: '1',
+                                      borderRadius: '16px',
+                                      borderColor: 'rgb(196, 207, 214)',
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </Card.Text>
 
                       <Container fluid className="p-0 mt-3">
@@ -129,9 +165,3 @@ function TweetsList(props) {
 }
 
 export default TweetsList;
-// {tweets.map((tweet) => (
-//   <div>
-//     <p>Name: {tweet.name}</p>
-//     <p>Description: {tweet.description}</p>
-//   </div>
-// ))}

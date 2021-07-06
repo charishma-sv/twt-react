@@ -73,7 +73,7 @@ const UserData = (props) => {
                       fluid
                       className="p-0 h-100 w-100 d-flex flex-column align-items-stretch w-100 position-absolute"
                       style={{
-                        backgroundImage: `url(${logo})`,
+                        backgroundImage: `url(${props.user.photoURL})`,
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                         backgroundPosition: 'center center',
@@ -88,7 +88,7 @@ const UserData = (props) => {
 
                     <img
                       alt="user profile"
-                      src={logo}
+                      src={props.user.photoURL}
                       className="profile-img"
                     />
                   </Container>

@@ -13,6 +13,7 @@ function TweetsBar(props) {
       <Container className="common-style">
         <HeaderPageName />
         <NewTweet
+          user={props.user}
           updateTweets={props.updateTweets}
           addTweet={props.addTweet}
           newTweetMediaFilesHandler={props.newTweetMediaFilesHandler}
@@ -24,7 +25,11 @@ function TweetsBar(props) {
           className="border-top border-bottom"
           style={{ height: '12px', backgroundColor: 'rgb(247, 249, 250)' }}
         ></div>
-        <TweetsList tweets={props.tweets} deleteTweet={props.deleteTweet} />
+        <TweetsList
+          user={props.user}
+          tweets={props.tweets}
+          deleteTweet={props.deleteTweet}
+        />
       </Container>
     </Container>
   );

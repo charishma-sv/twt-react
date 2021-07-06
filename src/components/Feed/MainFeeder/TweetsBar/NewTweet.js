@@ -5,7 +5,7 @@ import { UserContext } from '../../../../providers/UserProvider';
 
 const NewTweet = (props) => {
   const [tweet, setTweet] = React.useState('');
-  const user = React.useContext(UserContext);
+  const { user } = React.useContext(UserContext);
 
   const addNewTweet = async (user, tweet) => {
     //if (tweet === '') return;
@@ -33,29 +33,6 @@ const NewTweet = (props) => {
     props.newTweetMediaFilesHandler(mediaInput.files);
   };
 
-  // React.useEffect(() => {
-  //   const mediaButton = document.getElementById('media'),
-  //     mediaInput = document.getElementById('media-input');
-
-  //   // Open the Finder in mac or files dialog window in windows
-  //   mediaButton.addEventListener(
-  //     'click',
-  //     function (e) {
-  //       if (mediaInput) {
-  //         mediaInput.click();
-  //       }
-  //     },
-  //     false
-  //   );
-
-  //   //listen for selection of files
-  //   mediaInput.addEventListener(
-  //     'change',
-  //     () => props.newTweetMediaFilesHandler(mediaInput.files),
-  //     false
-  //   );
-  // }, []);
-
   return (
     <Container fluid className="p-0">
       <Container fluid className="p-0 pt-1 pb-1">
@@ -68,7 +45,13 @@ const NewTweet = (props) => {
             >
               <Container className=" p-0">
                 <div className="dot" style={{ height: '46px', width: '46px' }}>
-                  <img alt="User Profile" className="rounded-pill" />
+                  <img
+                    width="100%"
+                    height="100%"
+                    alt="User Profile"
+                    className="rounded-pill"
+                    src={props.user.photoURL}
+                  />
                 </div>
               </Container>
             </Col>

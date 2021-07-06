@@ -5,11 +5,8 @@ import HappeningNow from './HappeningNow';
 import LogoBackground from './LogoBackground';
 
 import '../../styles/scss/main.scss';
-import { UserContext } from '../../providers/UserProvider';
 
 const HomePage = () => {
-  const user = useContext(UserContext);
-
   return (
     <Container fluid className="p-0">
       <Row className="no-gutters">

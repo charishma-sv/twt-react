@@ -8,7 +8,7 @@ import ProtectedRoute from './Routes/ProtectedRoute';
 import PublicRoute from './Routes/PublicRoute';
 import Signup from './Signup';
 const Application = () => {
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
   return (
     <Router>
       <div>

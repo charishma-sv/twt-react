@@ -22,6 +22,7 @@ class MainFeeder extends Component {
             style={{ backgroundColor: 'rgba(0,0,0,0)', minHeight: '100%' }}
           >
             <TweetsBar
+              user={this.props.user}
               tweets={this.props.tweets}
               updateTweets={this.props.updateTweets}
               deleteTweet={this.props.deleteTweet}

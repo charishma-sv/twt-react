@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Container, Form, Modal } from 'react-bootstrap';
-import { auth, generateUserDocument } from '../../firebase';
+import { createUser } from '../../firebase';
 import SVGComponent from '../../reusableComponents/SVGComponent';
 const Signup = () => {
   const [email, setEmail] = React.useState('');
@@ -10,6 +10,7 @@ const Signup = () => {
   const [emailClick, setEmailClick] = React.useState(false);
   const [passwordClick, setPasswordClick] = React.useState(false);
   const [displayNameClick, setDisplayNameClick] = React.useState(false);
+  const [imageFile, setImageFile] = React.useState([]);
 
   const onClickHandler = (e) => {
     const element = e.currentTarget;
@@ -70,24 +71,27 @@ const Signup = () => {
   const createUserWithEmailAndPasswordHandler = async (
     event,
     email,
-    password
+    password,
+    displayName
   ) => {
     event.preventDefault();
 
     try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      await generateUserDocument(user, { displayName });
-      //history.push('/feed');
+      const user = await createUser(email, password, displayName, imageFile);
+      console.log('user in signup', user);
     } catch (error) {
       setError('Error Signing up with email and password');
     }
     setEmail('');
     setPassword('');
     setDisplayName('');
+    setImageFile([]);
+  };
+
+  const onImageInputChange = () => {
+    const imageInput = document.getElementById('signup-image-input');
+
+    setImageFile(imageInput.files[0]);
   };
 
   return (
@@ -108,8 +112,8 @@ const Signup = () => {
             style={{ alignSelf: 'stretch' }}
           >
             <Modal
+              data-testid="modal-content"
               show={true}
-              backdrop="static"
               animation="false"
               centered
               dialogClassName="customModal"
@@ -152,6 +156,7 @@ const Signup = () => {
                   {/* button to signup */}
                   <Container className="d-flex align-items-center justify-content-end flex-grow-1 h-100">
                     <Button
+                      data-testid="signup-btn"
                       variant="custom-color"
                       type="submit"
                       className="rounded-pill"
@@ -160,7 +165,9 @@ const Signup = () => {
                         createUserWithEmailAndPasswordHandler(
                           event,
                           email,
-                          password
+                          password,
+                          displayName,
+                          imageFile
                         );
                       }}
                     >
@@ -178,7 +185,6 @@ const Signup = () => {
                 }}
               >
                 <Form
-                  fluid
                   className="m-0 p-0 d-flex flex-column align-items-stretch flex-grow-1 flex-shrink-1"
                   style={{ overflow: 'auto' }}
                 >
@@ -223,6 +229,7 @@ const Signup = () => {
                           style={{ zIndex: '1' }}
                         >
                           <span
+                            data-testid="display-name-label"
                             id="displayNameLabel"
                             className={`p-0 position-absolute h-100 ${
                               displayNameClick ? 'p-1 pl-3' : 'p-3'
@@ -232,6 +239,7 @@ const Signup = () => {
                           </span>
                         </div>
                         <Form.Control
+                          data-testid="signup-display-name"
                           id="signUpDisplayName"
                           onBlur={(e) => restoreStyle(e)}
                           onClick={(event) => onClickHandler(event)}
@@ -258,6 +266,7 @@ const Signup = () => {
                           style={{ zIndex: '1' }}
                         >
                           <span
+                            data-testid="email-label"
                             id="emailLabel"
                             className={`position-absolute h-100 ${
                               emailClick ? 'p-1 pl-3' : 'p-3'
@@ -267,6 +276,7 @@ const Signup = () => {
                           </span>
                         </div>
                         <Form.Control
+                          data-testid="signup-email"
                           id="signUpEmail"
                           onBlur={(e) => restoreStyle(e)}
                           onClick={(event) => onClickHandler(event)}
@@ -293,6 +303,7 @@ const Signup = () => {
                           style={{ zIndex: '1' }}
                         >
                           <span
+                            data-testid="password-label"
                             id="passwordLabel"
                             className={`position-absolute h-100 ${
                               passwordClick ? 'p-1 pl-3' : 'p-3'
@@ -302,6 +313,7 @@ const Signup = () => {
                           </span>
                         </div>
                         <Form.Control
+                          data-testid="signup-password"
                           id="signUpPassword"
                           onBlur={(e) => restoreStyle(e)}
                           onClick={(event) => onClickHandler(event)}
@@ -314,6 +326,22 @@ const Signup = () => {
                           onChange={(event) => onChangeHandler(event)}
                         />
                       </Form.Label>
+                    </Form.Group>
+
+                    {/* Images */}
+                    <Form.Group
+                      className="m-0 d-flex flex-column align-items-stretch"
+                      style={{ paddingTop: '12px', paddingBottom: '12px' }}
+                    >
+                      <span>Upload image:</span>
+
+                      <Form.Control
+                        onChange={() => onImageInputChange()}
+                        type="file"
+                        id="signup-image-input"
+                        accept="image/*"
+                        style={{}}
+                      />
                     </Form.Group>
                   </Container>
                 </Form>
