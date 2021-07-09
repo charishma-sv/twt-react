@@ -30,32 +30,9 @@ export const createUser = async (email, password, displayName, imageFile) => {
       password
     );
     const { user } = credential;
-    //return user;
-
-    // .then(async (userCredential) => {
-
-    // console.log('user credential', userCredential);
-    // const user = userCredential.user;
     await generateUserDocument(user, { displayName, photoURL });
-    const newUser = await user.reload();
-    console.log('newuser', newUser);
-    console.log(auth.currentUser);
-
-    // await user.reload();
-    // auth.signOut();
-    // await user.reauthenticateWithCredential({ email, password });
-    //console.log('photourl', photoURL);
-    // await user.updateProfile({ displayName, photoURL });
-    // await user.updateProfile({ displayName });
-    // console.log('inside create user display name', user.displayName);
-    // const photoURL = await uploadAndDownloadUserImage(user.uid, imageFile);
-    // await user.updateProfile({ photoURL });
-    // console.log('inside create user and url is', user.photoURL);
-
-    //   await generateUserDocument(user);
-
+    const newUser = await getUserDocument(user);
     return newUser;
-    // });
   } catch (error) {
     console.log('error in create user ', error);
     throw error;
@@ -82,8 +59,6 @@ export const generateUserDocument = async (user, additionalData) => {
     try {
       await userRef.set({
         email,
-        // displayName,
-        // photoURL,
         ...additionalData,
       });
     } catch (error) {
@@ -112,6 +87,7 @@ export const getUserDocument = async (user) => {
 //login user
 export const login = (email, password) => {
   auth.signInWithEmailAndPassword(email, password).catch((error) => {
+    console.log('erro in signin', error);
     throw error;
   });
 };
@@ -170,6 +146,18 @@ export const getTweetsCollection = async () => {
   return tweets;
 };
 
+//get all the users
+export const getUsersCollection = async () => {
+  const response = firestore.collection('users');
+  const data = await response.get();
+  const users = data.docs.map((doc) => {
+    return {
+      uid: doc.id,
+      ...doc.data(),
+    };
+  });
+  return users;
+};
 //Delete a tweet document
 export const deleteTweetDocument = async (tweetId) => {
   await firestore.collection('tweets').doc(tweetId).delete();
@@ -178,11 +166,6 @@ export const deleteTweetDocument = async (tweetId) => {
 //uploading files to storage bucket
 export const uploadAndDownloadFiles = async (files, tweetId) => {
   const storageRef = storage.ref(tweetId);
-  // const fileRef = storageRef.child(files[0].name);
-  // await fileRef.put(files[0]);
-  // const url = await fileRef.getDownloadURL();
-  // console.log('url', url);
-
   const filesURLArr = await Promise.all(
     files.map(async (file) => {
       const fileRef = storageRef.child(file.name);
@@ -191,45 +174,4 @@ export const uploadAndDownloadFiles = async (files, tweetId) => {
     })
   );
   return filesURLArr;
-
-  // console.log('file[0]', files[0]);
-  // storageRef.child(files[0].name).put(files[0]);
-  // files.map(async (file) => {
-  //   const fileRef = storageRef.child(`${file.name}`);
-  //   await fileRef.put(file).then(() => {
-  //     console.log('inside upload then');
-  //   });
-  // });
 };
-
-//downloading files from storage bucket
-// export const getDownloadFilesURL = async (files, tweetId) => {
-//   const storageRef = storage.ref(tweetId);
-//   files.map(async (file) => {
-//     const fileRef = storageRef.child(`${file.name}`);
-//     await fileRef.getDownloadURL();
-//   });
-
-// let image;
-// await storageRef
-//   .child(files[0].name)
-//   .getDownloadURL()
-//   .then((url) => {
-//     image = url;
-//   });
-// console.log('image url', image);
-// return image;
-
-// const storageRef = storage.ref();
-// // const tweetRef = storageRef.child(tweetId);
-// const result = files.map(
-//   async (file) =>
-//     await storageRef
-//       .child(`${tweetId}/${file.name}`)
-//       .getDownloadURL()
-//       .then((url) => console.log('url', url))
-//       .catch((error) => {
-//         console.log('download file error', error);
-//       })
-// );
-// };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Container, Form, Modal } from 'react-bootstrap';
 import { createUser } from '../../firebase';
 import SVGComponent from '../../reusableComponents/SVGComponent';
-const Signup = () => {
+const Signup = (props) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [displayName, setDisplayName] = React.useState('');
@@ -78,8 +78,9 @@ const Signup = () => {
 
     try {
       const user = await createUser(email, password, displayName, imageFile);
-      console.log('user in signup', user);
+      props.updateUser(user);
     } catch (error) {
+      console.log('error in signup ', error);
       setError('Error Signing up with email and password');
     }
     setEmail('');

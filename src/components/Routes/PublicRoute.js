@@ -2,7 +2,14 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import LoadingComponent from '../LoadingComponent';
 
-const PublicRoute = ({ component: Component, user, ...rest }) => {
+const PublicRoute = ({
+  component: Component,
+  user,
+  authListner,
+  updateUser,
+  isLoggedIn,
+  ...rest
+}) => {
   return (
     // <Route
     //   {...rest}
@@ -15,20 +22,13 @@ const PublicRoute = ({ component: Component, user, ...rest }) => {
     //     }
     //   }}
     // />
-
-    // user === null ? (
-    //     <LoadingComponent />
-    //   ) : user ? (
-    //     <Redirect to="/feed" />
-    //   ) :
-
     <Route {...rest}>
       {user === null ? (
         <LoadingComponent />
       ) : user ? (
         <Redirect to="/feed" />
       ) : (
-        <Component />
+        <Component updateUser={updateUser} />
       )}
     </Route>
   );

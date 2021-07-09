@@ -8,12 +8,17 @@ import ProtectedRoute from './Routes/ProtectedRoute';
 import PublicRoute from './Routes/PublicRoute';
 import Signup from './Signup';
 const Application = () => {
-  const { user } = useContext(UserContext);
+  const { user, updateUser } = useContext(UserContext);
   return (
     <Router>
       <div>
         <PublicRoute component={Login} user={user} path="/login" />
-        <PublicRoute component={Signup} user={user} path="/signup" />
+        <PublicRoute
+          component={Signup}
+          user={user}
+          updateUser={updateUser}
+          path="/signup"
+        />
         <ProtectedRoute component={Feed} user={user} path="/feed" />
         <PublicRoute component={HomePage} user={user} path="/" exact />
       </div>

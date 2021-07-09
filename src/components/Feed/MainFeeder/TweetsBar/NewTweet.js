@@ -1,11 +1,9 @@
 import React from 'react';
 import { Form, Row, Col, Button, Container } from 'react-bootstrap';
 
-import { UserContext } from '../../../../providers/UserProvider';
-
 const NewTweet = (props) => {
   const [tweet, setTweet] = React.useState('');
-  const { user } = React.useContext(UserContext);
+  const { user } = props;
 
   const addNewTweet = async (user, tweet) => {
     //if (tweet === '') return;
@@ -48,7 +46,7 @@ const NewTweet = (props) => {
                   <img
                     width="100%"
                     height="100%"
-                    alt="User Profile"
+                    alt=""
                     className="rounded-pill"
                     src={props.user.photoURL}
                   />
@@ -78,6 +76,7 @@ const NewTweet = (props) => {
                   >
                     {props.attachmentFiles.map((file) => (
                       <Container
+                        key={file.name}
                         fluid
                         className="d-flex flex-grow position-relative col-6 justify-content-start m-0"
                         style={{ overflow: 'hidden' }}

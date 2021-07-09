@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Col, Container, Row } from 'react-bootstrap';
-import image from '../../../../images/logo.png';
 
 function TweetsList(props) {
   const { tweets } = props;
@@ -24,9 +23,9 @@ function TweetsList(props) {
                       <img
                         width="100%"
                         height="100%"
-                        alt="User Profile"
+                        alt=""
                         className="rounded-pill"
-                        src={props.user.photoURL}
+                        src={tweet.user.photoURL}
                       />
                     </div>
                   </Container>
@@ -47,7 +46,7 @@ function TweetsList(props) {
                           >
                             {tweet.images.map((image) => (
                               <div
-                                fluid
+                                key={image}
                                 className="d-flex mt-1 mb-1 p-0 flex-grow position-relative col-6 justify-content-start m-0"
                                 style={{ overflow: 'hidden' }}
                               >

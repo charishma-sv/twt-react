@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { auth, login } from '../../firebase';
+import { login } from '../../firebase';
 
 const Login = () => {
   const [email, setEmail] = React.useState('');
@@ -59,13 +59,14 @@ const Login = () => {
       login(email, password);
     } catch (error) {
       setError('Error Signing in with email and password');
+      console.log('error in login', error);
     }
     // auth.signInWithEmailAndPassword(email, password).catch((error) => {
     //   setError('Error signing in with password and email!');
     //   console.error('Error signing in with password and email', error);
     // });
   };
-
+  console.log('error', error);
   return (
     <Container fluid className="h-100 p-0 d-flex justify-content-center mt-4">
       <Container
@@ -89,7 +90,7 @@ const Login = () => {
             <h1 className="display-5 font-weight-bold mt-4 mb-2">
               Log in to Twitter
             </h1>
-            {error ? `${error}` : ''}
+            <p>{error ? `${error}` : ''}</p>
           </Container>
           <Container fluid className="login-form p-0">
             <Form>

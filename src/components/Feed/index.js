@@ -12,13 +12,15 @@ const Feed = (props) => {
   const [tweets, setTweets] = React.useState([]);
   const [attachment, setAttachment] = React.useState(false);
   const [attachmentFiles, setAttachmentFiles] = React.useState([]);
+
   const getTweets = async () => {
     const tweets = await getTweetsCollection();
-
     setTweets(tweets);
   };
 
-  useEffect(() => getTweets(), []);
+  useEffect(() => {
+    getTweets();
+  }, []);
 
   const deleteTweet = async (tweetId) => {
     await deleteTweetDocument(tweetId);

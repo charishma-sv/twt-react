@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { auth } from '../../../firebase';
-import logo from '../../../images/logo.png';
 
 const UserData = (props) => {
   const name = props.user ? props.user.displayName : '';
@@ -87,7 +86,7 @@ const UserData = (props) => {
                     ></Container>
 
                     <img
-                      alt="user profile"
+                      alt=""
                       src={props.user.photoURL}
                       className="profile-img"
                     />
