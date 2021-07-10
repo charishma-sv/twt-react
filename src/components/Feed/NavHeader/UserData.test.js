@@ -3,7 +3,6 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 const fakeAuth = {
   signOut: () => {
-    console.log('sign out testing');
     return jest.fn();
   },
 };

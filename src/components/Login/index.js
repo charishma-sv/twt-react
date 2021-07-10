@@ -55,18 +55,9 @@ const Login = () => {
 
   const signInWithEmailAndPasswordHandler = (event, email, password) => {
     event.preventDefault();
-    try {
-      login(email, password);
-    } catch (error) {
-      setError('Error Signing in with email and password');
-      console.log('error in login', error);
-    }
-    // auth.signInWithEmailAndPassword(email, password).catch((error) => {
-    //   setError('Error signing in with password and email!');
-    //   console.error('Error signing in with password and email', error);
-    // });
+
+    login(email, password, setError);
   };
-  console.log('error', error);
   return (
     <Container fluid className="h-100 p-0 d-flex justify-content-center mt-4">
       <Container

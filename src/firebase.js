@@ -85,11 +85,18 @@ export const getUserDocument = async (user) => {
 };
 
 //login user
-export const login = (email, password) => {
-  auth.signInWithEmailAndPassword(email, password).catch((error) => {
-    console.log('erro in signin', error);
-    throw error;
-  });
+export const login = (email, password, setError) => {
+  auth
+    .signInWithEmailAndPassword(email, password)
+    .then(() => {
+      console.log('');
+    })
+    .catch((error) => setError(error.message));
+
+  // .catch((error) => {
+  //   console.log('erro in signin', error);
+  //   throw error.message;
+  // });
 };
 
 //Generating new Tweet Document
