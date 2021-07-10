@@ -24,7 +24,7 @@ class HappeningNow extends Component {
         </svg>
         <Container className=" position-relative mt-5 mb-5">
           <span className="text-center h1 display-3 font-weight-bold">
-            Happening Now-Lets see change
+            Happening Now
           </span>
         </Container>
         <Container className=" mb-5">
@@ -38,7 +38,7 @@ class HappeningNow extends Component {
             className="btn btn-custom-color btn-lg w-75 mb-3 rounded-pill buttons "
           >
             <div className="container-fluid h-100 d-flex justify-content-center align-items-center">
-              <span>Sign up</span>
+              <span>Signup</span>
             </div>
           </Link>
 
@@ -47,7 +47,7 @@ class HappeningNow extends Component {
             className="btn btn-outline-custom-color btn-lg w-75 mb-3 rounded-pill buttons "
           >
             <div className="container-fluid h-100 d-flex justify-content-center align-items-center">
-              <span>Log in</span>
+              <span>Login</span>
             </div>
           </Link>
         </Container>
