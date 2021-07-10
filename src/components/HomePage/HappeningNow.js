@@ -24,12 +24,12 @@ class HappeningNow extends Component {
         </svg>
         <Container className=" position-relative mt-5 mb-5">
           <span className="text-center h1 display-3 font-weight-bold">
-            HappeningNow
+            Happening Now
           </span>
         </Container>
         <Container className=" mb-5">
           <span className="text-center h2 font-weight-bold">
-            Join Twittertoday
+            Join Twitter today
           </span>
         </Container>
         <Container>
