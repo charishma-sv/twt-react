@@ -24,7 +24,7 @@ class HappeningNow extends Component {
         </svg>
         <Container className=" position-relative mt-5 mb-5">
           <span className="text-center h1 display-3 font-weight-bold">
-            Happening now
+            HappeningNow
           </span>
         </Container>
         <Container className=" mb-5">
