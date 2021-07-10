@@ -29,7 +29,7 @@ class HappeningNow extends Component {
         </Container>
         <Container className=" mb-5">
           <span className="text-center h2 font-weight-bold">
-            Join Twitter today
+            Join Twittertoday
           </span>
         </Container>
         <Container>

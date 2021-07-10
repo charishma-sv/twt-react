@@ -13,8 +13,10 @@ class App extends Component {
     return (
       <CacheBuster>
         {({ loading, isLatestVersion, refreshCacheAndReload }) => {
+          console.log('loading and islatestversion', loading, isLatestVersion);
           if (loading) return null;
           if (!loading && !isLatestVersion) {
+            console.log('calling refreshcacheandreload');
             refreshCacheAndReload();
           }
           return (
