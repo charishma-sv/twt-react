@@ -172,7 +172,7 @@ const Signup = (props) => {
                         );
                       }}
                     >
-                      Next
+                      Submit
                     </Button>
                   </Container>
                 </Container>

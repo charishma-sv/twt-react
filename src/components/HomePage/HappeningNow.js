@@ -38,7 +38,7 @@ class HappeningNow extends Component {
             className="btn btn-custom-color btn-lg w-75 mb-3 rounded-pill buttons "
           >
             <div className="container-fluid h-100 d-flex justify-content-center align-items-center">
-              <span>Signup</span>
+              <span>Sign up</span>
             </div>
           </Link>
 
@@ -47,7 +47,7 @@ class HappeningNow extends Component {
             className="btn btn-outline-custom-color btn-lg w-75 mb-3 rounded-pill buttons "
           >
             <div className="container-fluid h-100 d-flex justify-content-center align-items-center">
-              <span>Login</span>
+              <span>Log in</span>
             </div>
           </Link>
         </Container>
