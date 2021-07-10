@@ -172,7 +172,7 @@ const Signup = (props) => {
                         );
                       }}
                     >
-                      Next
+                      Submit
                     </Button>
                   </Container>
                 </Container>
@@ -213,7 +213,7 @@ const Signup = (props) => {
                         className="p-0 m-0 d-inline"
                         style={{ overflowWrap: 'break-word', minWidth: '0px' }}
                       >
-                        Create an account
+                        Create your account
                       </span>
                     </Container>
                     {error ? `${error}` : ''}

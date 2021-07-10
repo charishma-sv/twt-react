@@ -79,7 +79,7 @@ const Login = () => {
             </svg>
 
             <h1 className="display-5 font-weight-bold mt-4 mb-2">
-              Log in to Twitter
+              Login to Twitter
             </h1>
             <p>{error ? `${error}` : ''}</p>
           </Container>
@@ -98,7 +98,7 @@ const Login = () => {
                         emailClick ? 'p-1 pl-3' : 'p-3'
                       }`}
                     >
-                      Phone, email, or username
+                      Email
                     </span>
                   </div>
                   <Form.Control
