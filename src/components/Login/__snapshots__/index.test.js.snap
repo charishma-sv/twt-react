@@ -38,9 +38,11 @@ exports[` Login component should match snapshot of Login Component 1`] = `
         <h1
           className="display-5 font-weight-bold mt-4 mb-2"
         >
-          Log in to Twitter
+          Login to Twitter
         </h1>
-        
+        <p>
+          
+        </p>
       </div>
       <div
         className="login-form p-0 container-fluid"
@@ -67,7 +69,7 @@ exports[` Login component should match snapshot of Login Component 1`] = `
                   data-testid="email-label"
                   id="emailLabel"
                 >
-                  Phone, email, or username
+                  Email
                 </span>
               </div>
               <input
